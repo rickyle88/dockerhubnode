@@ -1,0 +1,23 @@
+hub:
+ image: selenium/hub
+ ports:
+  - "4444:4444"
+ environment:
+  - GRID_TIMEOUT=600000
+chrome:
+ image: selenium/node-chrome
+ extra_hosts:
+  - "tsta.loanme.com:10.20.201.51"
+  - "tstb.loanme.com:10.20.201.51"
+  - "tstc.loanme.com:10.20.201.51"
+  - "stg.loanme.com:10.20.201.55"
+  - "tsta.cashcall.com:10.20.201.51"
+  - "tstb.cashcall.com:10.20.201.51"
+  - "tstc.cashcall.com:10.20.201.51"
+  - "stg.cashcall.com:10.20.201.55"
+  - "tsta.m.cashcall.com:10.20.201.51"
+  - "tstb.m.cashcall.com:10.20.201.51"
+  - "tstc.m.cashcall.com:10.20.201.51"
+  - "stg.m.cashcall.com:10.20.201.55"
+ links:
+  - hub
