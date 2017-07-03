@@ -2,5 +2,6 @@
 # This should work on Mac and Linux
 docker stop $(docker ps -a -q)
 docker container prune -f
-docker-compose scale chrome=6
-docker-compose up
+docker-compose up --scale chrome=6
+# docker-compose scale chrome=6
+# docker-compose up
