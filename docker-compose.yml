@@ -1,0 +1,34 @@
+#Docker V3
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome-debug
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+    ports:
+      - 32770-32774:5900
+    volumes:
+      - /dev/shm:/dev/shm
+# firefoxnode:
+#   image: selenium/node-firefox-debug
+#   environment:
+#     SCREEN_WIDTH: 1920
+#     SCREEN_HEIGHT: 1080
+#     NODE_MAX_INSTANCES: 2
+#     NODE_MAX_SESSION: 2
+#   ports:
+#     - 32770-32774:5900
+#   links:
+#     - seleniumhub:hub
